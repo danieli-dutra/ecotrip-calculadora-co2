@@ -1,0 +1,11 @@
+{
+  "name": "ecotrip",
+  "version": "1.0.0",
+  "description": "Calculadora inteligente de emissão de CO₂ para rotas urbanas no Brasil.",
+  "author": "Danieli Dutra Braga",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx live-server",
+    "start": "npx live-server"
+  }
+}

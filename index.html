@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EcoTrip - Calculadora de Emissões de CO₂. Calcule o impacto ambiental das suas viagens e descubra como compensar suas emissões de carbono.">
+    <title>EcoTrip • Calculadora de Emissões de CO₂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background decorative elements -->
+    <div class="bg-decoration">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <div class="logo" id="logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 8C17 5.24 14.76 3 12 3S7 5.24 7 8c0 3.75 5 9 5 9s5-5.25 5-9z"/>
+                        <circle cx="12" cy="8" r="2"/>
+                        <path d="M4 21c0-2.76 3.58-5 8-5s8 2.24 8 5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">EcoTrip</span>
+            </div>
+            <nav class="nav" id="nav">
+                <a href="#calculator" class="nav-link active" id="nav-calculator">Calculadora</a>
+                <a href="#about" class="nav-link" id="nav-about">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-badge" id="hero-badge">
+                <span class="badge-dot"></span>
+                Calculadora de Emissões
+            </div>
+            <h1 class="hero-title" id="hero-title">
+                Calcule o impacto ambiental<br>
+                <span class="hero-highlight">das suas viagens</span>
+            </h1>
+            <p class="hero-subtitle" id="hero-subtitle">
+                Descubra quanto CO₂ sua viagem emite e veja como compensar<br>
+                suas emissões de carbono de forma consciente.
+            </p>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="calculator-section" id="calculator">
+            <div class="calculator-card" id="calculator-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="card-title">Calcular Emissões</h2>
+                        <p class="card-description">Informe sua rota e meio de transporte</p>
+                    </div>
+                </div>
+
+                <form id="calculator-form" class="calculator-form">
+                    <!-- Route Inputs -->
+                    <div class="input-group-row">
+                        <div class="input-group" id="origin-group">
+                            <label for="origin" class="input-label">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <circle cx="12" cy="12" r="10"/>
+                                </svg>
+                                Origem
+                            </label>
+                            <input type="text" id="origin" class="input-field" placeholder="Ex: São Paulo, SP" required autocomplete="off">
+                            <div id="origin-suggestions" class="suggestions-list"></div>
+                        </div>
+
+                        <div class="swap-btn-wrapper">
+                            <button type="button" class="swap-btn" id="swap-btn" title="Trocar origem e destino">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 16l-4-4 4-4"/>
+                                    <path d="M17 8l4 4-4 4"/>
+                                    <path d="M3 12h18"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="input-group" id="destination-group">
+                            <label for="destination" class="input-label">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Destino
+                            </label>
+                            <input type="text" id="destination" class="input-field" placeholder="Ex: Rio de Janeiro, RJ" required autocomplete="off">
+                            <div id="destination-suggestions" class="suggestions-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Manual Distance Toggle -->
+                    <div class="manual-distance-section" id="manual-distance-section">
+                        <label class="toggle-label" for="manual-toggle">
+                            <input type="checkbox" id="manual-toggle" class="toggle-checkbox">
+                            <span class="toggle-switch"></span>
+                            <span class="toggle-text">Inserir distância manualmente</span>
+                        </label>
+                        <div class="manual-input-wrapper" id="manual-input-wrapper">
+                            <input type="number" id="manual-distance" class="input-field" placeholder="Distância em km" min="1" step="1">
+                            <span class="input-suffix">km</span>
+                        </div>
+                    </div>
+
+                    <!-- Transport Selection -->
+                    <div class="transport-section">
+                        <label class="input-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13" rx="2"/>
+                                <path d="M16 8h4l3 5v5h-3"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/>
+                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                            Meio de Transporte
+                        </label>
+                        <div class="transport-grid" id="transport-grid">
+                            <button type="button" class="transport-card" data-transport="bike" id="transport-bike">
+                                <div class="transport-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="5.5" cy="17.5" r="3.5"/>
+                                        <circle cx="18.5" cy="17.5" r="3.5"/>
+                                        <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor"/>
+                                        <path d="M12 17.5V14l-3-3 4-3 2 3h2"/>
+                                    </svg>
+                                </div>
+                                <span class="transport-name">Bicicleta</span>
+                                <span class="transport-emission">0 g/km</span>
+                            </button>
+
+                            <button type="button" class="transport-card" data-transport="bus" id="transport-bus">
+                                <div class="transport-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M8 6v6"/>
+                                        <path d="M16 6v6"/>
+                                        <rect x="4" y="3" width="16" height="16" rx="3"/>
+                                        <path d="M4 12h16"/>
+                                        <path d="M8 19v2"/>
+                                        <path d="M16 19v2"/>
+                                        <circle cx="7.5" cy="15.5" r="1" fill="currentColor"/>
+                                        <circle cx="16.5" cy="15.5" r="1" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                                <span class="transport-name">Ônibus</span>
+                                <span class="transport-emission">80 g/km</span>
+                            </button>
+
+                            <button type="button" class="transport-card selected" data-transport="car" id="transport-car">
+                                <div class="transport-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 17h14v-5l-2-5H7L5 12z"/>
+                                        <path d="M3 17h18v2H3z"/>
+                                        <circle cx="7.5" cy="17" r="1.5"/>
+                                        <circle cx="16.5" cy="17" r="1.5"/>
+                                    </svg>
+                                </div>
+                                <span class="transport-name">Carro</span>
+                                <span class="transport-emission">170 g/km</span>
+                            </button>
+
+                            <button type="button" class="transport-card" data-transport="truck" id="transport-truck">
+                                <div class="transport-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="1" y="4" width="14" height="11" rx="2"/>
+                                        <path d="M15 8h4l3 4v3h-3"/>
+                                        <circle cx="5.5" cy="17.5" r="2.5"/>
+                                        <circle cx="18.5" cy="17.5" r="2.5"/>
+                                    </svg>
+                                </div>
+                                <span class="transport-name">Caminhão</span>
+                                <span class="transport-emission">250 g/km</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        Calcular Emissões
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <p class="loading-text">Calculando rota e emissões...</p>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <section class="results-section hidden" id="results-section">
+            <!-- Route Summary -->
+            <div class="result-card route-summary" id="route-summary">
+                <div class="result-header">
+                    <div class="result-icon route-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12h4l3-9 4 18 3-9h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="result-title">Resumo da Rota</h3>
+                </div>
+                <div class="route-details">
+                    <div class="route-point">
+                        <div class="route-dot origin-dot"></div>
+                        <div>
+                            <span class="route-label">Origem</span>
+                            <span class="route-value" id="result-origin">—</span>
+                        </div>
+                    </div>
+                    <div class="route-line"></div>
+                    <div class="route-point">
+                        <div class="route-dot destination-dot"></div>
+                        <div>
+                            <span class="route-label">Destino</span>
+                            <span class="route-value" id="result-destination">—</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="result-distance">—</span>
+                        <span class="stat-label">Distância</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="result-transport">—</span>
+                        <span class="stat-label">Transporte</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emissions Result -->
+            <div class="result-card emissions-card" id="emissions-card">
+                <div class="result-header">
+                    <div class="result-icon emission-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 22c1.25-1.25 2.5-2 4-2 3 0 3 2 6 2s3-2 6-2c1.5 0 2.75.75 4 2"/>
+                            <path d="M8 18c-1-2-2.5-3.5-3-5 1 .5 2 1 3 .5 0-3 .5-5.5 2-8 .5 2.5 1 4 2 5.5C13 9 14 7.5 15 6c0 3 .5 5-1 7.5 1 .5 2 0 3-.5-.5 1.5-2 3-3 5"/>
+                        </svg>
+                    </div>
+                    <h3 class="result-title">Emissão de CO₂</h3>
+                </div>
+                <div class="emission-display">
+                    <span class="emission-value" id="emission-value">0</span>
+                    <span class="emission-unit">kg de CO₂</span>
+                </div>
+                <div class="emission-context" id="emission-context">
+                    Equivalente a <strong id="trees-equivalent">0</strong> árvores absorvendo CO₂ por um ano
+                </div>
+            </div>
+
+            <!-- Transport Comparison -->
+            <div class="result-card comparison-card" id="comparison-card">
+                <div class="result-header">
+                    <div class="result-icon compare-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3 class="result-title">Comparativo de Emissões</h3>
+                </div>
+                <div class="comparison-bars" id="comparison-bars">
+                    <!-- Dynamically generated -->
+                </div>
+            </div>
+
+            <!-- Carbon Credits -->
+            <div class="result-card credits-card" id="credits-card">
+                <div class="result-header">
+                    <div class="result-icon credits-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <path d="M15 8c-1.5-1-3.5-1-5 0"/>
+                            <path d="M9 12c0-2 1.5-4 3-4s3 2 3 4"/>
+                        </svg>
+                    </div>
+                    <h3 class="result-title">Compensação de Carbono</h3>
+                </div>
+                <div class="credits-grid">
+                    <div class="credit-item">
+                        <div class="credit-value" id="credits-needed">0</div>
+                        <div class="credit-label">Créditos de carbono necessários</div>
+                    </div>
+                    <div class="credit-item">
+                        <div class="credit-value credit-cost" id="credits-cost">R$ 0,00</div>
+                        <div class="credit-label">Custo estimado de compensação</div>
+                    </div>
+                </div>
+                <div class="credits-info">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <span>1 crédito de carbono = 1 tonelada de CO₂. Valor médio: R$ 80,00/crédito.</span>
+                </div>
+            </div>
+
+            <!-- New Calculation Button -->
+            <button class="new-calc-btn" id="new-calc-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="1 4 1 10 7 10"/>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                Novo Cálculo
+            </button>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="about-card">
+                <h2 class="about-title">Sobre o EcoTrip</h2>
+                <p class="about-text">
+                    O EcoTrip é uma calculadora de emissões de carbono que ajuda você a entender
+                    o impacto ambiental das suas viagens. Utilizamos dados reais de emissão de CO₂
+                    por quilômetro para diferentes meios de transporte.
+                </p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Cálculo de Rotas</h4>
+                            <p>Distâncias entre cidades brasileiras com fallback manual</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"/>
+                                <line x1="12" y1="20" x2="12" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="14"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Comparativo Visual</h4>
+                            <p>Compare emissões entre diferentes meios de transporte</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Créditos de Carbono</h4>
+                            <p>Estimativa de custo para compensar suas emissões</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-content">
+            <p class="footer-text">EcoTrip &copy; 2026 — Viaje com consciência ambiental</p>
+            <p class="footer-sub">Desenvolvido com 💚 para um futuro sustentável</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
