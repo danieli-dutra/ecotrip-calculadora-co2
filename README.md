@@ -19,13 +19,22 @@ Acesse o projeto online:
 ## 📸 Screenshots
 
 ### Tela inicial
-> `./assets/screenshot-home.png`
+
+<p align="center">
+  <img src="./assets/screenshot-home.png" alt="Tela inicial EcoTrip" width="900"/>
+</p>
 
 ### Resultado do cálculo
-> `./assets/screenshot-results.png`
+
+<p align="center">
+  <img src="./assets/screenshot-results.png" alt="Resultado do cálculo" width="900"/>
+</p>
 
 ### Sugestões de cidades
-> `./assets/screenshot-autocomplete.png`
+
+<p align="center">
+  <img src="./assets/screenshot-autocomplete.png" alt="Autocomplete de cidades" width="900"/>
+</p>
 
 ---
 
@@ -98,13 +107,26 @@ A aplicação usa uma base interna com cidades brasileiras e suas coordenadas ge
 ## 📁 Estrutura do projeto
 
 ```bash
-ecotrip/
-├── index.html
-├── css/styles.css
-├── js/scripts.js
+ecotrip-calculadora-co2/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 ├── assets/
-
+│   ├── screenshot-autocomplete.png
+│   ├── screenshot-home.png
+│   └── screenshot-results.png
+├── css/
+│   └── styles.css
+├── js/
+│   └── scripts.js
+├── .gitignore
+├── LICENSE
+├── index.html
+├── package.json
+├── README.md
+└── requirements.md
 ```
+
 ## ▶️ Como executar o projeto
 1. Clone o repositório
 git clone https://github.com/seu-usuario/ecotrip.git
