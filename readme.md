@@ -8,6 +8,12 @@
 
 > Aplicação web interativa para calcular emissões de CO₂ em viagens entre cidades brasileiras, com comparação entre meios de transporte e estimativa de compensação ambiental.
 
+## 🔗 Deploy
+
+Acesse o projeto online:
+
+👉 https://danieli-dutra.github.io/ecotrip-calculadora-co2/
+
 ---
 
 ## 📸 Screenshots
